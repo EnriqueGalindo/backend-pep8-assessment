@@ -36,7 +36,7 @@ while key != 27:
     # Printing 'Score' and
     win.addstr(0, 27, ' SNAKE ')
     # 'SNAKE' strings
-    win.timeout(150 - (len(snake)/5 + len(snake)/10) % 120)
+    win.timeout(150 - (len(snake)/5 + len(snake)/10)%120)
     # Increases the speed of Snake as its length increases
 
     prevKey = key
@@ -47,7 +47,7 @@ while key != 27:
     if key == ord(' '):
         # If SPACE BAR is pressed, wait for another
         key = -1
-        # one (Pause/Resume)
+         # one (Pause/Resume)
         while key != ord(' '):
             key = win.getch()
         key = prevKey
@@ -60,10 +60,8 @@ while key != 27:
     # Calculates the new coordinates of the head of the snake.
     # NOTE: len(snake) increases.
     # This is taken care of later at [1].
-    snake.insert(0, [snake[0][0] + (key == KEY_DOWN and 1)
-                     + (key == KEY_UP and -1), snake[0][1]
-                     + (key == KEY_LEFT and -1)
-                     + (key == KEY_RIGHT and 1)])
+    snake.insert(0,
+            [snake[0][0] + (key == KEY_DOWN and 1) + (key == KEY_UP and -1), snake[0][1] + (key == KEY_LEFT and -1) + (key == KEY_RIGHT and 1)])
 
     # If snake crosses the boundaries, make it enter from the other side
     if snake[0][0] == 0:
